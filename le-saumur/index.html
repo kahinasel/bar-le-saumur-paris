@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<!-- saved from url=(0030)https://le-saumur.netlify.app/ -->
+<html lang="fr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <title>Le Saumur &amp; FOLIA – Bar Cabaret à Belleville</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    :root {
+      --rouge-fonce: #1a0207;
+      --rouge: #8b001c;
+      --rouge-clair: #a3162c;
+      --or: #f4d58d;
+      --or-fonce: #c79b3d;
+      --texte: #f8e7c6;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #8b001c 0%, #1a0207 55%, #050004 100%);
+      color: var(--texte);
+      line-height: 1.5;
+    }
+
+    a {
+      color: var(--or);
+      text-decoration: none;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(12px);
+      background: linear-gradient(to right, rgba(5,0,4,0.92), rgba(26,2,7,0.96));
+      border-bottom: 1px solid rgba(244, 213, 141, 0.25);
+    }
+
+    .nav {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.5rem 1.2rem;
+    }
+
+    .logo {
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-size: 0.92rem;
+      color: var(--or);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .nav-links a {
+      opacity: 0.9;
+    }
+
+    .nav-links a:hover {
+      opacity: 1;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1.5rem 1.2rem 3rem;
+    }
+
+    /* HERO */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.5fr);
+      gap: 2rem;
+      align-items: center;
+      padding: 2rem 0 2.5rem;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(244,213,141,0.4);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      opacity: 0.9;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 4vw, 2.6rem);
+      margin: 1rem 0 0.5rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--or);
+    }
+
+    .hero p.lead {
+      max-width: 30rem;
+      font-size: 0.98rem;
+      opacity: 0.95;
+    }
+
+    .hero-actions {
+      margin-top: 1.2rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--or), var(--or-fonce));
+      color: #2b0a10;
+      border: none;
+      border-radius: 999px;
+      padding: 0.7rem 1.6rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.6);
+    }
+
+    .btn-outline {
+      border-radius: 999px;
+      border: 1px solid var(--or);
+      padding: 0.65rem 1.4rem;
+      font-size: 0.86rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      background: transparent;
+      color: var(--or);
+      cursor: pointer;
+    }
+
+    .hero-card {
+      border-radius: 18px;
+      border: 1px solid rgba(244,213,141,0.35);
+      background: radial-gradient(circle at top, rgba(219,40,80,0.28), rgba(7,0,5,0.95));
+      padding: 1rem 1.1rem 1.1rem;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.8);
+    }
+
+    .hero-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.6rem;
+      font-size: 0.82rem;
+      opacity: 0.9;
+    }
+
+    .hero-card-title {
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      color: var(--or);
+    }
+
+    .tag {
+      border-radius: 999px;
+      padding: 0.15rem 0.6rem;
+      border: 1px solid rgba(244,213,141,0.4);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      opacity: 0.9;
+    }
+
+    .hero-card-main {
+      border-radius: 14px;
+      background: radial-gradient(circle at top, rgba(255,80,120,0.07), rgba(0,0,0,0.9));
+      border: 1px solid rgba(244,213,141,0.35);
+      padding: 1rem;
+      text-align: left;
+      font-size: 0.86rem;
+    }
+
+    .hero-card-main h2 {
+      margin: 0 0 0.4rem;
+      font-size: 1rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--or);
+    }
+
+    .hero-card-main p {
+      margin: 0.1rem 0;
+      opacity: 0.9;
+    }
+
+    .hero-card-footer {
+      margin-top: 0.7rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+      opacity: 0.9;
+    }
+
+    .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #f35f7c;
+      box-shadow: 0 0 6px rgba(255,90,120,0.9);
+      margin-right: 0.35rem;
+    }
+
+    .small {
+      font-size: 0.78rem;
+      opacity: 0.8;
+    }
+
+    section {
+      margin-top: 2.8rem;
+    }
+
+    section h2 {
+      font-size: 1.3rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--or);
+      margin-bottom: 0.5rem;
+    }
+
+    section p {
+      font-size: 0.95rem;
+      opacity: 0.95;
+      max-width: 46rem;
+    }
+
+    .grid-two {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 1.8rem;
+      align-items: flex-start;
+    }
+
+    .card {
+      border-radius: 16px;
+      border: 1px solid rgba(244,213,141,0.3);
+      background: radial-gradient(circle at top, rgba(219,40,80,0.18), rgba(7,0,5,0.97));
+      padding: 1rem 1.1rem;
+      font-size: 0.9rem;
+    }
+
+    .badge-inline {
+      display: inline-block;
+      padding: 0.15rem 0.55rem;
+      border-radius: 999px;
+      border: 1px solid rgba(244,213,141,0.4);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      margin-bottom: 0.5rem;
+    }
+
+    ul {
+      padding-left: 1.1rem;
+      margin-top: 0.4rem;
+      margin-bottom: 0.3rem;
+      font-size: 0.9rem;
+    }
+
+    /* ROUE */
+    .wheel-section {
+      margin-top: 2.8rem;
+    }
+
+    .wheel-wrapper {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .wheel-container {
+      position: relative;
+      width: min(320px, 80vw);
+      height: min(320px, 80vw);
+      margin: 0 auto 1.2rem;
+    }
+
+    canvas {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      box-shadow: 0 0 28px rgba(0,0,0,0.7);
+    }
+
+    .pointer {
+      position: absolute;
+      top: -18px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 18px solid transparent;
+      border-right: 18px solid transparent;
+      border-bottom: 30px solid var(--or);
+      filter: drop-shadow(0 0 4px rgba(0,0,0,0.8));
+    }
+
+    button#spinBtn {
+      background: linear-gradient(135deg, var(--or), var(--or-fonce));
+      color: #2b0a10;
+      border: none;
+      border-radius: 999px;
+      padding: 0.7rem 1.7rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.6);
+      transition: transform 0.1s ease, box-shadow 0.1s ease, filter 0.15s ease;
+      margin-bottom: 0.4rem;
+    }
+
+    button#spinBtn:active {
+      transform: translateY(2px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+      filter: brightness(0.96);
+    }
+
+    .result {
+      margin-top: 0.35rem;
+      font-size: 1.02rem;
+      min-height: 1.3em;
+    }
+
+    a#avisBtn {
+      display: inline-block;
+      margin-top: 0.6rem;
+      padding: 0.5rem 1.5rem;
+      border-radius: 999px;
+      border: 1px solid var(--or);
+      color: var(--or);
+      text-decoration: none;
+      font-size: 0.86rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    a#avisBtn:hover {
+      background-color: rgba(244, 213, 141, 0.14);
+    }
+
+    .hint {
+      margin-top: 0.7rem;
+      font-size: 0.82rem;
+      opacity: 0.8;
+      max-width: 360px;
+    }
+
+    /* INFOS */
+    .infos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1.4rem;
+      margin-top: 0.8rem;
+    }
+
+    .info-item {
+      font-size: 0.9rem;
+      opacity: 0.95;
+    }
+
+    footer {
+      border-top: 1px solid rgba(244,213,141,0.25);
+      padding: 1rem 1.2rem 1.6rem;
+      text-align: center;
+      font-size: 0.8rem;
+      opacity: 0.75;
+    }
+
+    @media (max-width: 800px) {
+      .hero,
+      .grid-two,
+      .wheel-wrapper {
+        grid-template-columns: 1fr;
+      }
+      .hero {
+        padding-top: 1.4rem;
+      }
+      .hero-card {
+        order: -1;
+      }
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+      }
+      .nav-links {
+        font-size: 0.78rem;
+        flex-wrap: wrap;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <div class="logo">LE SAUMUR • FOLIA</div>
+      <nav class="nav-links">
+        <a href="https://le-saumur.netlify.app/#saumur">Le Saumur</a>
+        <a href="https://le-saumur.netlify.app/#folia">FOLIA</a>
+        <a href="https://le-saumur.netlify.app/#offre">Shot offert</a>
+        <a href="https://le-saumur.netlify.app/#roulette">Roue</a>
+        <a href="https://le-saumur.netlify.app/#infos">Infos</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero" id="saumur">
+      <div>
+        <div class="badge">Bar – Cabaret • Paris 20</div>
+        <h1>Le Saumur, bar aux ambiances street art &amp; cabaret</h1>
+        <p class="lead">
+          Au cœur de Belleville, Le Saumur mêle bar convivial, cocktails, terrasse et sous-sol cabaret avec FOLIA. 
+          Un lieu où la nuit se vit en rouge et or.
+        </p>
+        <div class="hero-actions">
+          <button class="btn-primary" onclick="document.getElementById(&#39;roulette&#39;).scrollIntoView({behavior:&#39;smooth&#39;})">
+            Tourner la roue
+          </button>
+          <button class="btn-outline" onclick="document.getElementById(&#39;folia&#39;).scrollIntoView({behavior:&#39;smooth&#39;})">
+            Découvrir FOLIA
+          </button>
+        </div>
+      </div>
+
+      <aside class="hero-card">
+        <div class="hero-card-header">
+          <div class="hero-card-title">FOLIA – Cabaret</div>
+          <div class="tag">Sous-sol • Belleville</div>
+        </div>
+        <div class="hero-card-main">
+          <h2>Nuits FOLIA</h2>
+          <p>Concerts, live shows, cabaret, DJ sets et fumoir aux ambiances street art. Une salle voûtée à l’atmosphère rouge intense, pensée pour les nuits parisiennes.</p>
+          <p class="small" style="margin-top:0.5rem;">
+            <strong>Adresse :</strong> 10 rue de Belleville, 75020 Paris<br>
+            <strong>Capacité :</strong> env. 200 personnes – privatisable.
+          </p>
+        </div>
+        <div class="hero-card-footer">
+          <div style="display:flex;align-items:center;">
+            <span class="dot"></span>
+            <span>Le secret de Belleville t’attend.</span>
+          </div>
+          <span class="small">Shot offert pour avis Google 5⭐</span>
+        </div>
+      </aside>
+    </section>
+
+    <!-- FOLIA -->
+    <section id="folia">
+      <h2>FOLIA – Cabaret au sous-sol</h2>
+      <div class="grid-two">
+        <div>
+          <p>
+            Sous le Saumur, FOLIA est une salle voûtée à l’ambiance rouge, pierre apparente et lumière tamisée. 
+            Un cabaret moderne où se croisent concerts, burlesque, DJ sets, performance et nuits folles.
+          </p>
+          <p>
+            La salle est également privatisable pour vos événements : showcases, soirées d’entreprise, tournages, 
+            soirées privées… Capacité d’environ 200 personnes, avec fumoir aux ambiances street art.
+          </p>
+        </div>
+        <div class="card">
+          <span class="badge-inline">Ambiances</span>
+          <ul>
+            <li>Cabaret moderne &amp; live shows</li>
+            <li>DJ sets &amp; concerts</li>
+            <li>Fumoir street art</li>
+            <li>Lumière rouge &amp; voûtes en pierre</li>
+          </ul>
+          <span class="badge-inline">Privatisation</span>
+          <ul>
+            <li>Capacité ~200 personnes</li>
+            <li>Idéal pour soirées privées &amp; pro</li>
+            <li>Bar sur place &amp; scène équipée</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- OFFRE SHOT -->
+    <section id="offre">
+      <h2>Offre shot gratuit</h2>
+      <div class="grid-two">
+        <div>
+          <p>
+            Pour remercier celles et ceux qui soutiennent la maison, nous offrons un shot pour :
+          </p>
+          <ul>
+            <li>Chaque <strong>avis Google 5⭐</strong> laissé pour <strong>Le Saumur</strong></li>
+            <li>Chaque <strong>abonnement TikTok</strong> au compte du Saumur</li>
+          </ul>
+          <p>
+            Montrez simplement votre écran au bar (avis publié ou abonnement) et profitez de votre shot offert.
+          </p>
+        </div>
+        <div class="card">
+          <span class="badge-inline">Comment faire ?</span>
+          <ul>
+            <li>Scannez notre QR code dans le bar</li>
+            <li>Laissez un avis Google 5⭐ ou abonnez-vous sur TikTok</li>
+            <li>Montrez l’écran au comptoir</li>
+            <li>Recevez votre shot offert 🍸</li>
+          </ul>
+          <p class="small" style="margin-top:0.4rem;opacity:0.9;">
+            Offre réservée aux clients sur place, dans la limite d’un shot par personne et par soirée.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ROUE -->
+    <section class="wheel-section" id="roulette">
+      <h2>Roue du Saumur</h2>
+      <div class="wheel-wrapper">
+        <div>
+          <p>
+            Fais tourner la roue et découvre ton cadeau! 
+            La roue du Saumur est pensée comme un petit rituel cabaret : un geste de la maison 
+            pour celles et ceux qui jouent le jeu.
+          </p>
+          <p class="small" style="opacity:0.9;">
+            Une fois la roue arrêtée, un bouton te permet d’ouvrir directement la page Google pour 
+            laisser ton avis 5⭐ après avoir laissé ton avis tu pourras récupérer ton shot au bar.
+          </p>
+        </div>
+
+        <div style="text-align:center;">
+          <div class="wheel-container">
+            <div class="pointer"></div>
+            <canvas id="wheelCanvas" width="400" height="400"></canvas>
+          </div>
+          <button id="spinBtn">Tourner la roue</button>
+         <div class="result" id="resultText"></div>
+         <a id="avisBtn" href="https://share.google/24G4ZaAbOWUO7fOYI" target="_blank" style="display:none;">
+  Laisser un avis Google ⭐
+          </a>
+          <p class="hint">
+            Montrez cet écran au bar <strong>Le Saumur</strong> pour obtenir votre shot offert.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- INFOS -->
+    <section id="infos">
+      <h2>Infos pratiques</h2>
+      <div class="infos-grid">
+        <div class="info-item">
+          <strong>Adresse</strong><br>
+          Le Saumur – Bar &amp; Cabaret<br>
+          10 rue de Belleville<br>
+          75020 Paris
+        </div>
+        <div class="info-item">
+          <strong>Contact</strong><br>
+          Tél : 06 51 15 52 13<br>
+          TikTok : @le.saumur<br>
+          Instagram : à venir
+        </div>
+        <div class="info-item">
+          <strong>Ambiance</strong><br>
+          Bar aux ambiances street art, cabaret au sous-sol avec FOLIA, 
+          concerts, live shows &amp; DJ sets.
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © Le Saumur &amp; FOLIA – Belleville, Paris 20. Nuits rouges, esprits libres.
+  </footer>
+
+  <script>
+  const segments = [
+    "SHOT OFFERT",
+    "PERDU",
+    "SHOT OFFERT",
+    "PERDU",
+    "SHOT OFFERT",
+    "PERDU"
+  ];
+
+  const canvas = document.getElementById("wheelCanvas");
+  const ctx = canvas.getContext("2d");
+  const size = canvas.width;
+  const radius = size / 2;
+  let currentAngle = 0;
+  let spinning = false;
+
+  function drawWheel(angleOffset = 0) {
+    ctx.clearRect(0, 0, size, size);
+    const num = segments.length;
+    const anglePer = (2 * Math.PI) / num;
+
+    for (let i = 0; i < num; i++) {
+      const start = angleOffset + i * anglePer;
+      const end = start + anglePer;
+
+      ctx.beginPath();
+      ctx.moveTo(radius, radius);
+      ctx.arc(radius, radius, radius, start, end);
+      ctx.closePath();
+      ctx.fillStyle = i % 2 === 0 ? "#a3162c" : "#d4af37";
+      ctx.fill();
+
+      ctx.strokeStyle = "#2b0a10";
+      ctx.lineWidth = 2;
+      ctx.stroke();
+
+      ctx.save();
+      ctx.translate(radius, radius);
+      ctx.rotate(start + anglePer / 2);
+      ctx.textAlign = "right";
+      ctx.fillStyle = "#fdf3d4";
+      ctx.font = "bold 20px system-ui";
+      ctx.fillText(segments[i], radius - 24, 6);
+      ctx.restore();
+    }
+
+    // centre
+    ctx.beginPath();
+    ctx.arc(radius, radius, 42, 0, 2 * Math.PI);
+    ctx.fillStyle = "#2b0a10";
+    ctx.fill();
+    ctx.strokeStyle = "#f4d58d";
+    ctx.lineWidth = 3;
+    ctx.stroke();
+
+    ctx.fillStyle = "#f4d58d";
+    ctx.font = "bold 16px system-ui";
+    ctx.textAlign = "center";
+    ctx.fillText("FOLIA", radius, radius + 5);
+  }
+
+  drawWheel(currentAngle);
+
+  function spin() {
+    if (spinning) return;
+    spinning = true;
+
+    const resultEl = document.getElementById("resultText");
+    const avisBtn = document.getElementById("avisBtn");
+
+    resultEl.textContent = "";
+    avisBtn.style.display = "none";
+
+    const alreadyUsed = localStorage.getItem("saumurWheelUsed") === "1";
+
+    // On fait tourner la roue pour l’animation
+    const extraTurns = 4 + Math.random() * 2;
+    const finalAngle = currentAngle + extraTurns * 2 * Math.PI;
+    const duration = 2500;
+    const start = performance.now();
+
+    function animate(now) {
+      const t = now - start;
+      const progress = Math.min(t / duration, 1);
+      const easeOut = 1 - Math.pow(1 - progress, 3);
+
+      const angle = currentAngle + (finalAngle - currentAngle) * easeOut;
+      drawWheel(angle);
+
+      if (progress < 1) {
+        requestAnimationFrame(animate);
+      } else {
+        currentAngle = finalAngle % (2 * Math.PI);
+        showResult(alreadyUsed);
+        spinning = false;
+      }
+    }
+
+    requestAnimationFrame(animate);
+  }
+
+  function showResult(alreadyUsed) {
+    const resultEl = document.getElementById("resultText");
+    const avisBtn = document.getElementById("avisBtn");
+
+    if (!alreadyUsed) {
+      // 1ère fois sur cet appareil : shot garanti
+      resultEl.textContent =
+        "Résultat : SHOT OFFERT ! 🍸 Laisse un avis Google 5⭐ et montre-le au bar pour récupérer ton shot.";
+      avisBtn.style.display = "inline-block";
+      localStorage.setItem("saumurWheelUsed", "1");
+    } else {
+      // Déjà joué sur cet appareil
+      resultEl.textContent =
+        "Tu as déjà utilisé l’offre sur cet appareil 😌. Récupère ton shot au bar en laissant un avis 5⭐.";
+      avisBtn.style.display = "inline-block";
+    }
+  }
+
+  document.getElementById("spinBtn").addEventListener("click", spin);
+  canvas.addEventListener("click", spin);
+</script>
+
+
+
+</body></html>
