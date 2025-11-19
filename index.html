@@ -452,10 +452,10 @@
       <aside class="hero-card">
         <div class="hero-card-header">
           <div class="hero-card-title">FOLIA – Cabaret</div>
-          <div class="tag">Sous-sol • Belleville</div>
+          <div class="tag">AU Sous-sol DU BAR LE SAUMUR• Belleville</div>
         </div>
         <div class="hero-card-main">
-          <h2>Nuits FOLIA</h2>
+          <h2>LE FOLIA</h2>
           <p>Concerts, live shows, cabaret, DJ sets et fumoir aux ambiances street art. Une salle voûtée à l’atmosphère rouge intense, pensée pour les nuits parisiennes.</p>
           <p class="small" style="margin-top:0.5rem;">
             <strong>Adresse :</strong> 10 rue de Belleville, 75020 Paris<br>
@@ -523,13 +523,12 @@
         <div class="card">
           <span class="badge-inline">Comment faire ?</span>
           <ul>
-            <li>Scannez notre QR code dans le bar</li>
             <li>Laissez un avis Google 5⭐ ou abonnez-vous sur TikTok</li>
             <li>Montrez l’écran au comptoir</li>
             <li>Recevez votre shot offert 🍸</li>
           </ul>
           <p class="small" style="margin-top:0.4rem;opacity:0.9;">
-            Offre réservée aux clients sur place, dans la limite d’un shot par personne et par soirée.
+            Offre réservée aux clients sur place, dans la limite d’un shot par personne.
           </p>
         </div>
       </div>
@@ -597,129 +596,148 @@
     © Le Saumur &amp; FOLIA – Belleville, Paris 20. Nuits rouges, esprits libres.
   </footer>
 
-  <script>
-  const segments = [
-    "SHOT OFFERT",
-    "PERDU",
-    "SHOT OFFERT",
-    "PERDU",
-    "SHOT OFFERT",
-    "PERDU"
-  ];
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    const segments = [
+      "SHOT OFFERT",
+      "PERDU",
+      "SHOT OFFERT",
+      "PERDU",
+      "SHOT OFFERT",
+      "PERDU"
+    ];
 
-  const canvas = document.getElementById("wheelCanvas");
-  const ctx = canvas.getContext("2d");
-  const size = canvas.width;
-  const radius = size / 2;
-  let currentAngle = 0;
-  let spinning = false;
+    const canvas = document.getElementById("wheelCanvas");
+    const spinBtn = document.getElementById("spinBtn");
+    const resultEl = document.getElementById("resultText");
+    const avisBtn = document.getElementById("avisBtn");
 
-  function drawWheel(angleOffset = 0) {
-    ctx.clearRect(0, 0, size, size);
+    if (!canvas || !spinBtn || !resultEl || !avisBtn) {
+      console.error("Un des éléments de la roue est introuvable.");
+      return;
+    }
+
+    const ctx = canvas.getContext("2d");
+    const size = canvas.width;
+    const radius = size / 2;
     const num = segments.length;
     const anglePer = (2 * Math.PI) / num;
 
-    for (let i = 0; i < num; i++) {
-      const start = angleOffset + i * anglePer;
-      const end = start + anglePer;
+    let currentAngle = 0;
+    let spinning = false;
 
+    // On aligne le segment "SHOT OFFERT" (index 0) en haut, sous la flèche
+    const baseOffset = -Math.PI / 2 - anglePer / 2;
+
+    function drawWheel(angleOffset = 0) {
+      ctx.clearRect(0, 0, size, size);
+
+      for (let i = 0; i < num; i++) {
+        const start = baseOffset + angleOffset + i * anglePer;
+        const end = start + anglePer;
+
+        // secteur
+        ctx.beginPath();
+        ctx.moveTo(radius, radius);
+        ctx.arc(radius, radius, radius, start, end);
+        ctx.closePath();
+        ctx.fillStyle = i % 2 === 0 ? "#a3162c" : "#d4af37";
+        ctx.fill();
+
+        ctx.strokeStyle = "#2b0a10";
+        ctx.lineWidth = 2;
+        ctx.stroke();
+
+        // texte
+        ctx.save();
+        ctx.translate(radius, radius);
+        ctx.rotate(start + anglePer / 2);
+        ctx.textAlign = "right";
+        ctx.fillStyle = "#fdf3d4";
+        ctx.font = "bold 20px system-ui";
+        ctx.fillText(segments[i], radius - 24, 6);
+        ctx.restore();
+      }
+
+      // centre
       ctx.beginPath();
-      ctx.moveTo(radius, radius);
-      ctx.arc(radius, radius, radius, start, end);
-      ctx.closePath();
-      ctx.fillStyle = i % 2 === 0 ? "#a3162c" : "#d4af37";
+      ctx.arc(radius, radius, 42, 0, 2 * Math.PI);
+      ctx.fillStyle = "#2b0a10";
       ctx.fill();
-
-      ctx.strokeStyle = "#2b0a10";
-      ctx.lineWidth = 2;
+      ctx.strokeStyle = "#f4d58d";
+      ctx.lineWidth = 3;
       ctx.stroke();
 
-      ctx.save();
-      ctx.translate(radius, radius);
-      ctx.rotate(start + anglePer / 2);
-      ctx.textAlign = "right";
-      ctx.fillStyle = "#fdf3d4";
-      ctx.font = "bold 20px system-ui";
-      ctx.fillText(segments[i], radius - 24, 6);
-      ctx.restore();
+      ctx.fillStyle = "#f4d58d";
+      ctx.font = "bold 16px system-ui";
+      ctx.textAlign = "center";
+      ctx.fillText("FOLIA", radius, radius + 5);
     }
 
-    // centre
-    ctx.beginPath();
-    ctx.arc(radius, radius, 42, 0, 2 * Math.PI);
-    ctx.fillStyle = "#2b0a10";
-    ctx.fill();
-    ctx.strokeStyle = "#f4d58d";
-    ctx.lineWidth = 3;
-    ctx.stroke();
+    drawWheel(currentAngle);
 
-    ctx.fillStyle = "#f4d58d";
-    ctx.font = "bold 16px system-ui";
-    ctx.textAlign = "center";
-    ctx.fillText("FOLIA", radius, radius + 5);
-  }
+    function spin() {
+      if (spinning) return;
+      spinning = true;
 
-  drawWheel(currentAngle);
+      resultEl.textContent = "";
+      avisBtn.style.display = "none";
 
-  function spin() {
-    if (spinning) return;
-    spinning = true;
+      let alreadyUsed = false;
+      try {
+        alreadyUsed = localStorage.getItem("saumurWheelUsed") === "1";
+      } catch (e) {
+        alreadyUsed = false;
+      }
 
-    const resultEl = document.getElementById("resultText");
-    const avisBtn = document.getElementById("avisBtn");
+      // On fait tourner la roue mais elle revient toujours à la même orientation
+      const extraTurns = 4; // nombre de tours complets
+      const finalAngle = currentAngle + extraTurns * 2 * Math.PI;
+      const duration = 2500;
+      const start = performance.now();
 
-    resultEl.textContent = "";
-    avisBtn.style.display = "none";
+      function animate(now) {
+        const t = now - start;
+        const progress = Math.min(t / duration, 1);
+        const easeOut = 1 - Math.pow(1 - progress, 3);
 
-    const alreadyUsed = localStorage.getItem("saumurWheelUsed") === "1";
+        const angle = currentAngle + (finalAngle - currentAngle) * easeOut;
+        drawWheel(angle);
 
-    // On fait tourner la roue pour l’animation
-    const extraTurns = 4 + Math.random() * 2;
-    const finalAngle = currentAngle + extraTurns * 2 * Math.PI;
-    const duration = 2500;
-    const start = performance.now();
+        if (progress < 1) {
+          requestAnimationFrame(animate);
+        } else {
+          currentAngle = finalAngle % (2 * Math.PI);
+          showResult(alreadyUsed);
+          spinning = false;
+        }
+      }
 
-    function animate(now) {
-      const t = now - start;
-      const progress = Math.min(t / duration, 1);
-      const easeOut = 1 - Math.pow(1 - progress, 3);
+      requestAnimationFrame(animate);
+    }
 
-      const angle = currentAngle + (finalAngle - currentAngle) * easeOut;
-      drawWheel(angle);
-
-      if (progress < 1) {
-        requestAnimationFrame(animate);
+    function showResult(alreadyUsed) {
+      if (!alreadyUsed) {
+        // 1ère fois sur cet appareil : SHOT OFFERT
+        resultEl.textContent =
+          "Résultat : SHOT OFFERT ! 🍸 Laisse un avis Google 5⭐ et montre-le au bar pour récupérer ton shot.";
+        avisBtn.style.display = "inline-block";
+        try {
+          localStorage.setItem("saumurWheelUsed", "1");
+        } catch (e) {}
       } else {
-        currentAngle = finalAngle % (2 * Math.PI);
-        showResult(alreadyUsed);
-        spinning = false;
+        // Ensuite : plus de nouveau shot, mais on redirige quand même vers l'avis
+        resultEl.textContent =
+          "Tu as déjà utilisé l’offre sur cet appareil 😌. Laisse un avis Google 5⭐ et récupère ton shot au bar.";
+        avisBtn.style.display = "inline-block";
       }
     }
 
-    requestAnimationFrame(animate);
-  }
-
-  function showResult(alreadyUsed) {
-    const resultEl = document.getElementById("resultText");
-    const avisBtn = document.getElementById("avisBtn");
-
-    if (!alreadyUsed) {
-      // 1ère fois sur cet appareil : shot garanti
-      resultEl.textContent =
-        "Résultat : SHOT OFFERT ! 🍸 Laisse un avis Google 5⭐ et montre-le au bar pour récupérer ton shot.";
-      avisBtn.style.display = "inline-block";
-      localStorage.setItem("saumurWheelUsed", "1");
-    } else {
-      // Déjà joué sur cet appareil
-      resultEl.textContent =
-        "Tu as déjà utilisé l’offre sur cet appareil 😌. Récupère ton shot au bar en laissant un avis 5⭐.";
-      avisBtn.style.display = "inline-block";
-    }
-  }
-
-  document.getElementById("spinBtn").addEventListener("click", spin);
-  canvas.addEventListener("click", spin);
+    spinBtn.addEventListener("click", spin);
+    canvas.addEventListener("click", spin);
+  });
 </script>
+
 
 
 
