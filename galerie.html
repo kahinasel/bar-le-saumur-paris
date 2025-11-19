@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Galerie – Le Saumur</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    :root {
+      --rouge-fonce: #1a0207;
+      --rouge: #8b001c;
+      --rouge-clair: #a3162c;
+      --or: #f4d58d;
+      --or-fonce: #c79b3d;
+      --texte: #f8e7c6;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, sans-serif;
+      background: radial-gradient(circle at top, #8b001c 0%, #1a0207 55%, #050004 100%);
+      color: var(--texte);
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(12px);
+      background: rgba(5,0,4,0.92);
+      border-bottom: 1px solid rgba(244,213,141,0.25);
+    }
+
+    .nav {
+      max-width: 1300px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.7rem 1.2rem;
+    }
+
+    .logo {
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--or);
+      font-size: 0.9rem;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    a { color: var(--or); text-decoration: none; }
+
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2.5rem 1.2rem 4rem;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--or);
+      margin-bottom: 2rem;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.4rem;
+    }
+
+    .img-box {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(244,213,141,0.25);
+      border-radius: 12px;
+      height: 260px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--or);
+      font-size: 0.9rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      opacity: 0.7;
+    }
+
+    footer {
+      border-top: 1px solid rgba(244,213,141,0.25);
+      text-align: center;
+      padding: 1.4rem 0;
+      font-size: 0.8rem;
+      opacity: 0.75;
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="nav">
+    <div class="logo">LE SAUMUR • FOLIA</div>
+
+    <nav class="nav-links">
+      <a href="index.html">Accueil</a>
+      <a href="menu.html">Menu</a>
+      <a href="reserve.html">Réservation</a>
+      <a href="galerie.html">Galerie</a>
+      <a href="events.html">Événements</a>
+      <a href="carte.html">Carte</a>
+      <a href="index.html#offre">Shot offert</a>
+      <a href="index.html#roulette">Roue</a>
+      <a href="index.html#infos">Infos</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <h1>GALERIE PHOTO</h1>
+
+  <div class="gallery">
+    <div class="img-box">Photo 1</div>
+    <div class="img-box">Photo 2</div>
+    <div class="img-box">Photo 3</div>
+    <div class="img-box">Photo 4</div>
+    <div class="img-box">Photo 5</div>
+    <div class="img-box">Photo 6</div>
+  </div>
+
+  <p style="margin-top:2rem; opacity:0.8;">
+    Ajoutez vos photos dans cette galerie en remplaçant les blocs ci-dessus.<br>
+    (Tu veux que je t’explique comment mettre les vraies images ? Je peux le faire.)
+  </p>
+
+</main>
+
+<footer>
+  © Le Saumur & FOLIA – Belleville, Paris 20
+</footer>
+
+</body>
+</html>

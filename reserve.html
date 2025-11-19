@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Réservation – Le Saumur</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    :root {
+      --rouge-fonce: #1a0207;
+      --rouge: #8b001c;
+      --rouge-clair: #a3162c;
+      --or: #f4d58d;
+      --or-fonce: #c79b3d;
+      --texte: #f8e7c6;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, sans-serif;
+      background: radial-gradient(circle at top, #8b001c 0%, #1a0207 55%, #050004 100%);
+      color: var(--texte);
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(12px);
+      background: rgba(5,0,4,0.92);
+      border-bottom: 1px solid rgba(244,213,141,0.25);
+    }
+
+    .nav {
+      max-width: 1300px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.7rem 1.2rem;
+    }
+
+    .logo {
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--or);
+      font-size: 0.9rem;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    a { color: var(--or); text-decoration: none; }
+
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 3rem 1.2rem 4rem;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--or);
+      margin-bottom: 1.2rem;
+    }
+
+    p {
+      font-size: 1rem;
+      opacity: 0.9;
+      margin-bottom: 2rem;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 1.5rem;
+      padding: 0.8rem 1.8rem;
+      background: linear-gradient(135deg, var(--or), var(--or-fonce));
+      color: #2b0a10;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.6);
+    }
+
+    footer {
+      border-top: 1px solid rgba(244,213,141,0.25);
+      text-align: center;
+      padding: 1.4rem 0;
+      font-size: 0.8rem;
+      opacity: 0.75;
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="nav">
+    <div class="logo">LE SAUMUR • FOLIA</div>
+
+    <nav class="nav-links">
+      <a href="index.html">Accueil</a>
+      <a href="menu.html">Menu</a>
+      <a href="reserve.html">Réservation</a>
+      <a href="galerie.html">Galerie</a>
+      <a href="events.html">Événements</a>
+      <a href="carte.html">Carte</a>
+      <a href="index.html#offre">Shot offert</a>
+      <a href="index.html#roulette">Roue</a>
+      <a href="index.html#infos()">Infos</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <h1>Réserver & Privatiser</h1>
+
+  <p>
+    Privatisation de la salle FOLIA (200 personnes), réservation de tables, showcases,
+    anniversaires, événements professionnels, soirées privées.<br><br>
+    Cliquez ci-dessous pour accéder directement au formulaire complet.
+  </p>
+
+  <a class="btn" href="https://linktr.ee/auvieuxsaumur" target="_blank">
+    Accéder aux Réservations
+  </a>
+</main>
+
+<footer>
+  © Le Saumur & FOLIA – Belleville, Paris 20
+</footer>
+
+</body>
+</html>
